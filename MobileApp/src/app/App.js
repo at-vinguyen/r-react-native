@@ -9,6 +9,8 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, TextInput, Image, StatusBar} from 'react-native';
 
+import sass from '../stylesheet/screen/home.scss';
+
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
   android:
@@ -25,13 +27,13 @@ export default class App extends Component<Props> {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={sass.container}>
         <StatusBar barStyle="light-content" />
         {/* <View style={styles.bg}>
           <Image source={require('../assets/image/bg.jpg')} style={styles.backgroundImage} />
         </View> */}
         <View style={styles.topBar}>
-          <Text style={styles.appTitle}>Ms Home</Text>
+          <Text style={styles.appTitle}>Home</Text>
         </View>
         <View style={styles.main}>
           <Text style={styles.welcome}>Hi Guest!</Text>

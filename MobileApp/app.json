@@ -1,4 +1,10 @@
 {
   "name": "moneysaving",
-  "displayName": "moneysaving"
+  "displayName": "moneysaving",
+  "expo": {
+    "packagerOpts": {
+      "sourceExts": ["js", "jsx", "scss", "sass"],
+      "transformer": "node_modules/react-native-sass-transformer/index.js"
+    }
+  }
 }
