@@ -7,9 +7,10 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, TextInput, Image, StatusBar} from 'react-native';
-
-import sass from '../../stylesheet/screen/home.scss';
+import {Platform, StyleSheet, Text, View, TextInput, Image, Button } from 'react-native';
+// import { Button } from 'react-native-elements';
+import homeStyles from '../../stylesheet/screen/home.scss';
+import btnStyles from '../../stylesheet/element/button.scss';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -19,6 +20,9 @@ const instructions = Platform.select({
 });
 
 export default class HomeScreen extends React.Component {
+  static navigationOptions = {
+    title: 'Home',
+  };
   constructor(props) {
     super(props);
     this.state = { text: 'Useless Placeholder' };
@@ -26,77 +30,26 @@ export default class HomeScreen extends React.Component {
 
   render() {
     return (
-      <View style={sass.container}>
-        <StatusBar barStyle="light-content" />
-        {/* <View style={styles.bg}>
-          <Image source={require('../assets/image/bg.jpg')} style={styles.backgroundImage} />
-        </View> */}
-        <View style={styles.topBar}>
-          <Text style={styles.appTitle}>Home</Text>
+      <View style={homeStyles.container}>
+        <Text style={[internalStyles.flex, internalStyles.center]}>Text</Text>
+        <View style={internalStyles.flex}>
+          <TextInput/>
         </View>
-        <View style={styles.main}>
-          <Text style={styles.welcome}>Hi Guest!</Text>
-          <Text style={styles.description}>Don't loss your money!</Text>
+        <View style={internalStyles.flex}>
+          <Button
+            title="Next"
+            onPress={() => this.props.navigation.navigate('Login')}
+          />
         </View>
-        <View style={styles.devMode}>
-          <Text style={styles.instructions}>{instructions}</Text>
-        </View>      
       </View>
     );
   }
 }
-const styles = StyleSheet.create({
-  backgroundImage: {
-    flex: 1,
-    resizeMode: 'cover',
+const internalStyles = StyleSheet.create({
+  flex: {
+    flexDirection: 'column'
   },
-  bg: {
-    position: 'absolute',
-    height: '100%',
-    width: '100%',
-  },
-  topBar: {
-    position: 'relative',
-    height: 50,
-    width: '100%',
-    backgroundColor: '#8aba56',
-    justifyContent: 'flex-end',
-    paddingBottom: 4
-  },
-  appTitle: {
-    color: '#ffffff',
-    fontWeight: 'bold',
-    textAlign: 'center',
-    fontSize: 16
-  },
-  container: {
-    height: '100%',
-    backgroundColor: '#ffffff'
-  },
-  main: {
-    textAlign: 'center',
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  welcome: {
-    fontSize: 32,
-    margin: 10
-  },
-  description: {
-    color: '#333333'
-  },
-  devMode: {
-    position: 'absolute',
-    bottom: 0,
-    width: '100%',
-    backgroundColor: 'rgba(0, 0, 0, 0.75)',
-    paddingTop: 10,
-    paddingBottom: 10
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#ffffff',
-    marginBottom: 5,
+  center: {
+    textAlign: 'center'
   }
 });
