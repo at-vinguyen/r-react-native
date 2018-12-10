@@ -1,16 +1,20 @@
 import React from 'react';
 import { StackNavigator } from 'react-navigation';
-
-import HomeScreen from './screens/HomeScreen';
+import { Text, View } from 'react-native';
 import LoginScreen from './screens/LoginScreen';
+import HomeScreen from './screens/HomeScreen';
+import StatisticsScreen from './screens/StatisticsScreen';
 
 const RootStack = StackNavigator(
   {
+    Login: {
+      screen: LoginScreen
+    },
     Home: {
       screen: HomeScreen
     },
-    Login: {
-      screen: LoginScreen
+    Report: {
+      screen: StatisticsScreen
     }
   },
   {
@@ -25,23 +29,18 @@ const RootStack = StackNavigator(
         fontWeight: 'bold',
       },
     },
-    initialRouteName: 'Home'
+    initialRouteName: 'Login'
   }
 );
 
 export default class App extends React.Component {
-  static navigationOptions = {
-    title: 'Login',
-    headerStyle: {
-      backgroundColor: '#f4511e',
-      borderBottom: 0
-    },
-    headerTintColor: '#fff',
-    headerTitleStyle: {
-      fontWeight: 'bold',
-    },
-  };
   render() {
-    return <RootStack />; 
+    return <RootStack />;
+    // return (
+    //   <View>
+    //     <RootStack />
+    //     <Text>Bottom Navigator</Text>
+    //   </View>
+    // );
   }
 }
